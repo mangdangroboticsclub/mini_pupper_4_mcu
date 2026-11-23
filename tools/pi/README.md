@@ -13,14 +13,14 @@ music…) drives this firmware unchanged.
 
 ## 1. Wires: six of them
 
-| J-PI pin | Net | Wire | ESP role | Raspberry Pi 40-pin header |
+| J-PI pin | Wire | ESP pin | Function | Pi 5 header |
 |---|---|---|---|---|
-| 1 | GND | black | ground | GND, pin 6 (or 9, 14, 20…) |
-| 2 | IO18_PI_1 | blue | UART1 TX (ESP → Pi) | GPIO15 RXD, **pin 10** |
-| 3 | IO8_PI_2 | green | UART1 RX (Pi → ESP) | GPIO14 TXD, **pin 8** |
-| 4 | IO3_PI_3 | yellow | HOST_PRESENT input | GPIO17, **pin 11** (the Pi drives it) |
-| 5 | IO11_PI_4 | white | ESP_SLAVE output | GPIO27, **pin 13** (the Pi reads it) |
-| 6 | VBUS 5 V | red | 5 V | pin 2 / 4 (only if the Pi is powered from the robot) |
+| 1 | black | GND | ground | pin 6 (GND) |
+| 2 | blue | IO11 | ESP_SLAVE, ESP drives HIGH | **pin 13**, GPIO27 |
+| 3 | green | IO3 | HOST_PRESENT, Pi drives HIGH | **pin 11**, GPIO17 |
+| 4 | yellow | IO8 | UART RX (Pi → ESP) | **pin 8**, GPIO14 TXD |
+| 5 | white | IO18 | UART TX (ESP → Pi) | **pin 10**, GPIO15 RXD |
+| 6 | red | VBUS 5 V | 5 V from the ESP board's SY8105 (5 A) | pin 2 / 4 (5V) — only if the ESP board powers the Pi |
 
 Both boards use 3.3 V logic: no level shifter. If the link stays silent,
 swapping the two data wires is the first thing to try.
